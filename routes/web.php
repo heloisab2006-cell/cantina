@@ -1,14 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\CantinaController;
+use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\PedidoController;
 
-// Rota principal da página da cantina
-Route::get('/', [CantinaController::class, 'index'])->name('cantina.index');
+// Página principal do cardápio
+Route::get('/', [CantinaController::class, 'index'])->name('cantina');
 
-// Rota correta que o formulário chama ao clicar no "+"
-Route::post('/carrinho/adicionar', [CantinaController::class, 'adicionar'])->name('carrinho.add');
+// Adicionar item ao carrinho
+Route::post('/carrinho/adicionar', [CarrinhoController::class, 'adicionar'])
+    ->name('carrinho.adicionar');
 
-// Rota correta que esvazia o carrinho ao clicar no "X"
-Route::post('/carrinho/limpar', [CantinaController::class, 'limpar'])->name('carrinho.clear');
-Route::post('/carrinho/remover', [CantinaController::class, 'remover'])->name('carrinho.remove');
+// Exibir carrinho
+Route::get('/carrinho', [CarrinhoController::class, 'index'])
+    ->name('carrinho');
+
+// Remover item do carrinho
+Route::delete('/carrinho/remover/{id}', [CarrinhoController::class, 'remover'])
+    ->name('carrinho.remover');
+
+// Finalizar pedido
+Route::post('/pedido/finalizar', [PedidoController::class, 'finalizar'])
+    ->name('pedido.finalizar');

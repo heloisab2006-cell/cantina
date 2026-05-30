@@ -23,43 +23,73 @@ class CantinaController extends Controller
                 'descricao' => '6 unidades de pão de queijo',
                 'preco' => 5.00,
                 'imagem' => asset('img/paoqueijo.jpg')
-            ]
+            ],
+              (object)[
+                'id' => 3,
+                'nome' => 'CROISSANT',
+                'descricao' => '1 unidade de croissant de peito de peru',
+                'preco' => 9.00,
+                'imagem' => asset('img/cro.jpg')
+              ],
+               (object)[
+                'id' => 4,
+                'nome' => 'PASTEL',
+                'descricao' => '1 unidade pastel de carne',
+                'preco' => 10.00,
+                'imagem' => asset('img/pastel.jpg')
+              ]
         ]);
-
+    
         // 2. LISTA DE DOCES (Movido para dentro da função index)
         $doces = collect([
             (object)[
-                'id' => 3,
+                'id' => 5,
                 'nome' => 'BROWNIE DE CHOCOLATE',
                 'descricao' => 'Brownie de chocolate preto',
                 'preco' => 7.00,
                 'imagem' => asset('img/brownie.jpg') // Ajustado para a pasta img/
             ],
             (object)[
-                'id' => 4,
+                'id' => 6,
                 'nome' => 'COOKIE',
                 'descricao' => 'Cookie gourmet tradicional',
                 'preco' => 3.50,
                 'imagem' => asset('img/cookie.jpg') // Ajustado para a pasta img/
-            ]
+            ],
+             (object)[
+                'id' => 7,
+                'nome' => 'BOLO DE POTE',
+                'descricao' => '1 unidade de bolo de pote de chocolate com leite ninho e morangos',
+                'preco' => 13.00,
+                'imagem' => asset('img/bolopote.jpg') // Ajustado para a pasta img/
+            ],
+
         ]);
 
         // 3. LISTA DE BEBIDAS (Movido para dentro da função index)
         $bebidas = collect([
             (object)[
-                'id' => 5,
+                'id' => 8,
                 'nome' => 'GUARANÁ',
                 'descricao' => 'Guarana 220ml',
                 'preco' => 6.00,
                 'imagem' => asset('img/guarana220.jpg') // Ajustado para a pasta img/
             ],
             (object)[
-                'id' => 6,
+                'id' => 9,
                 'nome' => 'COCA COLA LATA',
                 'descricao' => 'Coca-cola 220ml',
                 'preco' => 5.00,
                 'imagem' => asset('img/coca220.jpg') // Ajustado para a pasta img/
-            ]
+            ],
+              (object)[
+                'id' => 10,
+                'nome' => 'SUCO DE LARANJA',
+                'descricao' => 'Suco de laranja natural',
+                'preco' => 7.00,
+                'imagem' => asset('img/sucolaranja.jpg') // Ajustado para a pasta img/
+            ],
+            
         ]);
 
         // Gerenciamento unificado do carrinho na sessão
@@ -76,28 +106,27 @@ class CantinaController extends Controller
         return view('cantina', compact('salgados', 'doces', 'bebidas', 'totalItens', 'valorTotal'));
     }
 
-    public function adicionar(Request $request)
-    {
-        $id = $request->input('id');
-        $nome = $request->input('name');
-        $preco = (float) $request->input('price');
+   public function adicionar(Request $request)
+{
+    $carrinho = session()->get('carrinho', []);
 
-        $carrinho = session()->get('carrinho', []);
+    $id = $request->id;
 
-        if (isset($carrinho[$id])) {
-            $carrinho[$id]['quantidade']++;
-        } else {
-            $carrinho[$id] = [
-                "nome" => $nome,
-                "preco" => $preco,
-                "quantidade" => 1
-            ];
-        }
-
-        session()->put('carrinho', $carrinho);
-        return redirect()->back();
+    if(isset($carrinho[$id])) {
+        $carrinho[$id]['quantidade']++;
+    } else {
+        $carrinho[$id] = [
+            'id' => $request->id,
+            'nome' => $request->name,
+            'preco' => $request->price,
+            'quantidade' => 1
+        ];
     }
 
+    session()->put('carrinho', $carrinho);
+
+    return back()->with('success', 'Produto adicionado!');
+}
     public function limpar()
     {
         session()->forget('carrinho');
