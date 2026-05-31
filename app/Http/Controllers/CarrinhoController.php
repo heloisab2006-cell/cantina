@@ -7,6 +7,7 @@ use App\Models\Produto;
 
 class CarrinhoController extends Controller
 {
+    //Retornar o carrinho de pedidos
     public function index()
     {
         $carrinho = session()->get('carrinho', []);
@@ -19,6 +20,7 @@ class CarrinhoController extends Controller
         return view('carrinho.index', compact('carrinho', 'total'));
     }
 
+    //Busca o Produto pelo ID, se existir aumenta a quantidade
     public function adicionar(Request $request)
     {
         $produto = Produto::findOrFail($request->id);
@@ -47,7 +49,6 @@ class CarrinhoController extends Controller
             session()->put('carrinho', $carrinho);
         }
 
-        // Volta para a página anterior (cantina.blade.php)
         return redirect()->back()->with('success', 'Item removido do carrinho!');
     }
 
@@ -61,11 +62,13 @@ class CarrinhoController extends Controller
             session()->put('carrinho', $carrinho);
         }
 
-        // Volta para a página anterior (cantina.blade.php)
         return redirect()->back()->with('success', 'Quantidade atualizada!');
     }
 
-    public function checkout(Request $request)
+
+    //Valida os dados, verifica se tem item no carrinhos
+    public function checkout(PedidoRequest $request)
+
     {
         // Validação dos dados do cliente
         $validated = $request->validate([
@@ -81,21 +84,29 @@ class CarrinhoController extends Controller
             return redirect()->back()->with('error', 'Seu carrinho está vazio!');
         }
 
-        // Aqui você pode salvar o pedido no banco
-        // Exemplo:
-        // Pedido::create([
-        //     'nome' => $validated['nome'],
-        //     'cpf' => $validated['cpf'],
-        //     'setor' => $validated['setor'],
-        //     'quarto' => $validated['quarto'],
-        //     'itens' => json_encode($carrinho),
-        //     'total' => collect($carrinho)->sum(fn($item) => $item['preco'] * $item['quantidade']),
-        // ]);
-
         // Limpa o carrinho
         session()->forget('carrinho');
 
         return redirect()->back()->with('success', 'Pedido realizado com sucesso!');
+    }
+    public function salvarDados(Request $request)
+    {
+        $request->validate([
+            'nome' => 'required|string|min:5',
+            'cpf' => ['required', 'regex:/^[0-9]{11}$/'],
+            'setor' => 'required|exists:setores,id',
+            'quarto' => 'required|exists:quartos,id',
+        ]);
+
+        // Guardar na sessão
+        session([
+            'nomeCliente' => $request->nome,
+            'cpfCliente' => $request->cpf,
+            'setorSelecionado' => $request->setor,
+            'quartoSelecionado' => $request->quarto,
+        ]);
+
+        return redirect()->route('produtos.index')->with('success', 'Dados salvos com sucesso!');
     }
 
 

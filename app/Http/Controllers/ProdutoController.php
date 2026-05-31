@@ -40,6 +40,12 @@ class ProdutoController extends Controller
             $quartoSelecionado = Quarto::find(old('quarto'));
         }
 
+        // Recupera dados do cliente da sessão
+        $nomeCliente = session('nomeCliente');
+        $cpfCliente = session('cpfCliente');
+        $setorSelecionado = session('setorSelecionado') ? Setor::find(session('setorSelecionado')) : null;
+        $quartoSelecionado = session('quartoSelecionado') ? Quarto::find(session('quartoSelecionado')) : null;
+
         return view('cantina', compact(
             'salgados',
             'doces',
@@ -48,8 +54,11 @@ class ProdutoController extends Controller
             'valorTotal',
             'setores',
             'setorSelecionado',
-            'quartoSelecionado'
+            'quartoSelecionado',
+            'nomeCliente',
+            'cpfCliente'
         ));
+
     }
 
     /**
@@ -102,13 +111,13 @@ class ProdutoController extends Controller
         if ($request->hasFile('imagem')) {
             $path = $request->file('imagem')->store('produtos', 'public');
             $dados['imagem'] = $path;
-
         }
 
         $produto->update($dados);
 
         return redirect()->route('produtos.gerenciar')->with('success', 'Produto atualizado com sucesso!');
     }
+
     public function destroy(Produto $produto)
     {
         $produto->delete();
@@ -124,4 +133,3 @@ class ProdutoController extends Controller
         return view('produtos.gerenciar', compact('produtos'));
     }
 }
-?>

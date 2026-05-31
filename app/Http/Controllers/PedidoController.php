@@ -2,66 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PedidoRequest; // importa a Form Request
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\PedidoItem;
 
 class PedidoController extends Controller
 {
-
     public function index()
     {
+        // Pedidos em andamento
+        $pedidosFeitos = Pedido::with(['itens', 'setor', 'quarto'])
+            ->where('status', 'feito')
+            ->latest()
+            ->get();
 
-        $pedidosFeitos = Pedido::where('status', 'feito')->get();
-        $pedidosFinalizados = Pedido::where('status', 'finalizado')->get();
-        $pedidosCancelados = Pedido::where('status', 'cancelado')->get();
-        
+        // Pedidos finalizados
+        $pedidosFinalizados = Pedido::with(['itens', 'setor', 'quarto'])
+            ->where('status', 'finalizado')
+            ->latest()
+            ->get();
+
+        // Pedidos cancelados
+        $pedidosCancelados = Pedido::with(['itens', 'setor', 'quarto'])
+            ->where('status', 'cancelado')
+            ->latest()
+            ->get();
+
         return view('pedidos.index', compact('pedidosFeitos', 'pedidosFinalizados', 'pedidosCancelados'));
-        // Pedidos em andamento (não finalizados)
-        $pedidosFeitos = \App\Models\Pedido::with(['itens', 'setor', 'quarto'])
-            ->where('status', 'feito') // ou outro campo que você definiu
-            ->latest()
-            ->get();
-
-        // Pedidos já finalizados
-        $pedidosFinalizados = \App\Models\Pedido::with(['itens', 'setor', 'quarto'])
-            ->where('status', 'finalizado') // ou outro campo que você definiu
-            ->latest()
-            ->get();
-
-        return view('pedidos.index', compact('pedidosFeitos', 'pedidosFinalizados'));
-
-        
     }
 
-
-    public function checkout(Request $request)
+    public function checkout(PedidoRequest $request)
     {
+        // Os dados já foram validados automaticamente pelo PedidoRequest
+        $validated = $request->validated();
 
         // Recupera carrinho da sessão
         $carrinho = session()->get('carrinho', []);
         if (empty($carrinho)) {
-            return redirect()->back()->with('error', 'Carrinho vazio!');
+            return redirect()->back()->withErrors(['carrinho' => 'O carrinho deve ter pelo menos um item.']);
         }
 
         // Calcula total
-        $total = 0;
-        foreach ($carrinho as $item) {
-            $total += $item['preco'] * $item['quantidade'];
-        }
+        $total = collect($carrinho)->sum(fn($item) => $item['preco'] * $item['quantidade']);
 
-        // Cria o pedido já com status "feito"
+        // Cria o pedido
         $pedido = Pedido::create([
-            'nome' => $request->nome,
-            'cpf' => $request->cpf,
-            'setor_id' => $request->setor,
-            'quarto_id' => $request->quarto,
+            'nome' => $validated['nome'],
+            'cpf' => $validated['cpf'],
+            'setor_id' => $validated['setor'],
+            'quarto_id' => $validated['quarto'],
             'total' => $total,
             'status' => 'feito',
         ]);
 
-
-        // Cria os itens vinculados ao pedido
+        // Cria os itens vinculados
         foreach ($carrinho as $item) {
             PedidoItem::create([
                 'pedido_id' => $pedido->id,
@@ -98,6 +93,22 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.index')->with('error', 'Pedido cancelado.');
     }
 
+    public function salvarDados(Request $request)
+    {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => ['required', 'regex:/^[0-9]{11}$/'],
+            'setor' => 'required|exists:setores,id',
+            'quarto' => 'required|exists:quartos,id',
+        ]);
 
+        session([
+            'nomeCliente' => $request->nome,
+            'cpfCliente' => $request->cpf,
+            'setorSelecionado' => $request->setor,
+            'quartoSelecionado' => $request->quarto,
+        ]);
 
+        return redirect()->back()->with('success', 'Dados salvos com sucesso!');
+    }
 }
