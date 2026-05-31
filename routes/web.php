@@ -17,9 +17,14 @@ Route::post('/carrinho/checkout', [CarrinhoController::class, 'checkout'])->name
 Route::get('/api/quartos/{setor}', function($setorId) {
     return \App\Models\Quarto::where('setor_id', $setorId)->get();
 });
+Route::get('/produtos/gerenciar', [ProdutoController::class, 'gerenciar'])->name('produtos.gerenciar');
+Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store');
+Route::put('/produtos/{produto}', [ProdutoController::class, 'update'])->name('produtos.update');
+Route::delete('/produtos/{produto}', [ProdutoController::class, 'destroy'])->name('produtos.destroy');
+Route::get('/produtos/gerenciar', [ProdutoController::class, 'gerenciar'])->name('produtos.gerenciar');
 
 
-
+Route::resource('produtos', ProdutoController::class);
 Route::get('/', [ProdutoController::class, 'index'])->name('produtos.index');
 
 // checkout de pedidos → nome único

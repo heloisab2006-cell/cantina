@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-    // Informa ao Laravel o nome exato da tabela no Workbench
+    use HasFactory;
+
+    // Informa ao Laravel o nome exato da tabela
     protected $table = 'produtos';
 
     // Permite a inserção de dados em massa nessas colunas
@@ -15,6 +18,11 @@ class Produto extends Model
         'descricao',
         'preco',
         'imagem',
-        'categoria'
+        'categoria',
+    ];
+
+    // Caso queira trabalhar com casts automáticos
+    protected $casts = [
+        'preco' => 'decimal:2',
     ];
 }

@@ -40,8 +40,9 @@
                 <input type="hidden" name="name" value="{{ $produto->nome }}">
                 <input type="hidden" name="price" value="{{ $produto->preco }}">
                 <div class="d-flex align-items-center gap-3 flex-grow-1">
-                    <img src="{{ asset($produto->imagem) }}" alt="{{ $produto->nome }}" class="rounded"
-                        style="width:70px;height:70px;object-fit:cover;">
+                    <img src="{{ asset('storage/' . $produto->imagem) }}" alt="{{ $produto->nome }}"
+                        class="rounded img-thumbnail" style="width:70px;height:70px;object-fit:cover;">
+
                     <div>
                         <div class="fw-bold text-uppercase">{{ $produto->nome }}</div>
                         <div class="text-muted small">{{ $produto->descricao }}</div>
@@ -62,8 +63,10 @@
                 <input type="hidden" name="name" value="{{ $produto->nome }}">
                 <input type="hidden" name="price" value="{{ $produto->preco }}">
                 <div class="d-flex align-items-center gap-3 flex-grow-1">
-                    <img src="{{ asset($produto->imagem) }}" alt="{{ $produto->nome }}" class="rounded"
-                        style="width:70px;height:70px;object-fit:cover;">
+                    <img src="{{ asset('storage/'.$produto->imagem) }}" alt="{{ $produto->nome }}"
+     class="rounded img-thumbnail"
+     style="width:70px;height:70px;object-fit:cover;">
+
                     <div>
                         <div class="fw-bold text-uppercase">{{ $produto->nome }}</div>
                         <div class="text-muted small">{{ $produto->descricao }}</div>
@@ -84,8 +87,10 @@
                 <input type="hidden" name="name" value="{{ $produto->nome }}">
                 <input type="hidden" name="price" value="{{ $produto->preco }}">
                 <div class="d-flex align-items-center gap-3 flex-grow-1">
-                    <img src="{{ asset($produto->imagem) }}" alt="{{ $produto->nome }}" class="rounded"
-                        style="width:70px;height:70px;object-fit:cover;">
+                    <img src="{{ asset('storage/'.$produto->imagem) }}" alt="{{ $produto->nome }}"
+     class="rounded img-thumbnail"
+     style="width:70px;height:70px;object-fit:cover;">
+
                     <div>
                         <div class="fw-bold text-uppercase">{{ $produto->nome }}</div>
                         <div class="text-muted small">{{ $produto->descricao }}</div>
@@ -98,38 +103,41 @@
     </div>
 
     <!-- Rodapé carrinho -->
-    <div class="fixed-bottom bg-success text-white py-2">
-    <div class="container-fluid">
-        <div class="d-flex text-center">
-            <div class="flex-fill">
-                <button id="btn-usuario" class="btn text-white d-block w-100" data-bs-toggle="modal" data-bs-target="#dadosModal">
-                    <div class="d-flex flex-column align-items-center">
-                        <span class="fs-4">👤</span>
-                        <strong>Meus Dados</strong>
-                    </div>
-                </button>
-            </div>
-            <!-- Divisão -->
-            <div class="border-start border-white"></div>
-            <div class="flex-fill">
-                <button id="btn-ver-carrinho" class="btn text-white d-block w-100" data-bs-toggle="modal" data-bs-target="#carrinhoModal">
-                    <div class="d-flex flex-column align-items-center">
-                        <span class="fs-4">🛒</span>
-                        <strong>Ver Itens</strong>
-                    </div>
-                </button>
-            </div>
-            <div class="flex-fill">
-                <button id="btn-finalizar-compra" class="btn btn-warning d-block w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#checkoutModal">
-                    <div class="d-flex flex-column align-items-center">
-                        <span class="fs-3">🚀</span>
-                        <strong>Fazer Pedido</strong>
-                    </div>
-                </button>
+    <div class="fixed-bottom bg-success text-white py-1">
+        <div class="container-fluid">
+            <div class="d-flex text-center">
+                <div class="flex-fill">
+                    <button id="btn-usuario" class="btn text-white d-block w-100" data-bs-toggle="modal"
+                        data-bs-target="#dadosModal">
+                        <div class="d-flex flex-column align-items-center">
+                            <span class="fs-4">👤</span>
+                            <strong>Meus Dados</strong>
+                        </div>
+                    </button>
+                </div>
+                <!-- Divisão -->
+                <div class="border-start border-white"></div>
+                <div class="flex-fill">
+                    <button id="btn-ver-carrinho" class="btn text-white d-block w-100" data-bs-toggle="modal"
+                        data-bs-target="#carrinhoModal">
+                        <div class="d-flex flex-column align-items-center">
+                            <span class="fs-4">🛒</span>
+                            <strong>Ver Itens</strong>
+                        </div>
+                    </button>
+                </div>
+                <div class="flex-fill">
+                    <button id="btn-finalizar-compra" class="btn btn-warning d-block w-100 fw-bold"
+                        data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                        <div class="d-flex flex-column align-items-center">
+                            <span class="fs-3">🚀</span>
+                            <strong>Fazer Pedido</strong>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 

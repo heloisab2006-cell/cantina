@@ -23,7 +23,6 @@
                 <a href="#secao-finalizados" class="btn btn-outline-success btn-sm">Pedidos Finalizados</a>
                 <a href="#secao-cancelados" class="btn btn-outline-danger btn-sm">Pedidos Cancelados</a>
             </nav>
-
         </div>
 
         <!-- Pedidos Feitos -->
@@ -116,10 +115,18 @@
                         </div>
                     </a>
                 </div>
+                <div class="border-start border-white"></div>
+                <div class="flex-fill">
+                    <a href="{{ route('produtos.gerenciar') }}" class="btn btn-warning d-block w-100 fw-bold">
+                        <div class="d-flex flex-column align-items-center">
+                            <span class="fs-3">➕</span>
+                            <strong>Novo Produto</strong>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
