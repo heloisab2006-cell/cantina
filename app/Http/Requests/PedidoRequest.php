@@ -6,11 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PedidoRequest extends FormRequest
 {
+    //Perfis e Usuários
     public function authorize()
     {
         return true;
     }
 
+    //Validaçao se as regras estão sendo compridas
     public function rules()
     {
         return [

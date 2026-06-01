@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Exibe o cardápio agrupado por categoria e o carrinho
-     */
+    
+     //Exibe o cardápio agrupado por categoria e o carrinho
     public function index()
     {
+        //Busca Produto por Categoria
         $salgados = Produto::where('categoria', 'salgados')->get();
         $doces = Produto::where('categoria', 'doces')->get();
         $bebidas = Produto::where('categoria', 'bebidas')->get();
@@ -61,13 +61,13 @@ class ProdutoController extends Controller
 
     }
 
-    /**
-     * CRUD de Produtos
-     */
+    
+    //Cria de Produtos
     public function create()
     {
         return view('produtos.create');
     }
+
 
     public function store(Request $request)
     {
@@ -124,9 +124,9 @@ class ProdutoController extends Controller
         return redirect()->route('produtos.gerenciar')->with('success', 'Produto excluído com sucesso!');
     }
 
-    /**
-     * Exibe a tela de gerenciamento de produtos (CRUD)
-     */
+    
+    //Exibe a tela de gerenciamento de produtos (CRUD)
+     
     public function gerenciar()
     {
         $produtos = Produto::all();

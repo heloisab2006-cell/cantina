@@ -17,7 +17,7 @@
     <div class="container py-3">
         <!-- Cabeçalho fixo -->
         <div class="sticky-top bg-white shadow-sm p-3 mb-4">
-            <h1 class="text-center fw-bold text-secondary">📋 Pedidos - Hospital Maice</h1>
+            <h1 class="text-center fw-bold text-secondary">Pedidos - Hospital Maice</h1>
             <nav class="d-flex justify-content-around mt-3">
                 <a href="#secao-feitos" class="btn btn-outline-primary btn-sm">Pedidos Feitos</a>
                 <a href="#secao-finalizados" class="btn btn-outline-success btn-sm">Pedidos Finalizados</a>

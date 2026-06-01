@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content shadow-lg">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="dadosModalLabel">👤 Meus Dados</h5>
+                <h5 class="modal-title" id="dadosModalLabel">Meus Dados</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <form id="formModal" action="{{ route('carrinho.salvarDados') }}" method="POST">
@@ -98,7 +98,7 @@
     });
 </script>
 
-{{-- Script para reabrir modal se houver erros --}}
+<!-- Script para reabrir modal se houver erros -->
 @if ($errors->any())
     <script>
         var dadosModal = new bootstrap.Modal(document.getElementById('dadosModal'));

@@ -65,10 +65,10 @@ class CarrinhoController extends Controller
         return redirect()->back()->with('success', 'Quantidade atualizada!');
     }
 
-
+    
     //Valida os dados, verifica se tem item no carrinhos
-    public function checkout(PedidoRequest $request)
-
+    /*public function checkout(PedidoRequest $request)
+    
     {
         // Validação dos dados do cliente
         $validated = $request->validate([
@@ -88,7 +88,7 @@ class CarrinhoController extends Controller
         session()->forget('carrinho');
 
         return redirect()->back()->with('success', 'Pedido realizado com sucesso!');
-    }
+    }*/
     public function salvarDados(Request $request)
     {
         $request->validate([

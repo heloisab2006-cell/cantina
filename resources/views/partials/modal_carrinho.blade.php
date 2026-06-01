@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content shadow-lg">
             <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="carrinhoModalLabel">🛒 Meu Carrinho</h5>
+                <h5 class="modal-title" id="carrinhoModalLabel">Meu Carrinho</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body bg-light">
@@ -13,7 +13,7 @@
                 @endphp
 
                 @if(empty($carrinho))
-                    <div class="alert alert-warning text-center">Seu carrinho está vazio 😕</div>
+                    <div class="alert alert-warning text-center">Seu carrinho está vazio</div>
                 @else
                     <table class="table">
                         <thead>

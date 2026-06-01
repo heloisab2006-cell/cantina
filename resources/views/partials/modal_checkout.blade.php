@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content shadow-lg">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title fw-bold" id="checkoutModalLabel">🚀 Resumo do Pedido</h5>
+                <h5 class="modal-title fw-bold" id="checkoutModalLabel">Resumo do Pedido</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">

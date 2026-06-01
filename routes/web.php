@@ -29,8 +29,6 @@ Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.st
 Route::put('/produtos/{produto}', [ProdutoController::class, 'update'])->name('produtos.update');
 Route::delete('/produtos/{produto}', [ProdutoController::class, 'destroy'])->name('produtos.destroy');
 
-// Se quiser usar resource, mantenha apenas ele OU as rotas manuais
-// Route::resource('produtos', ProdutoController::class);
 
 // Pedidos
 Route::post('/checkout', [PedidoController::class, 'checkout'])->name('pedidos.checkout');
