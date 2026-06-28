@@ -98,7 +98,7 @@
                     <button id="btn-usuario" class="btn text-white d-block w-100" data-bs-toggle="modal"
                         data-bs-target="#dadosModal">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-4">👤</span>
+                            <span class="fs-4"></span>
                             <strong>Meus Dados</strong>
                         </div>
                     </button>
@@ -109,7 +109,7 @@
                     <button id="btn-ver-carrinho" class="btn text-white d-block w-100" data-bs-toggle="modal"
                         data-bs-target="#carrinhoModal">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-4">🛒</span>
+                            <span class="fs-4"></span>
                             <strong>Ver Itens</strong>
                         </div>
                     </button>
@@ -118,7 +118,7 @@
                     <button id="btn-finalizar-compra" class="btn btn-warning d-block w-100 fw-bold"
                         data-bs-toggle="modal" data-bs-target="#checkoutModal">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-3">🚀</span>
+                            <span class="fs-3"></span>
                             <strong>Fazer Pedido</strong>
                         </div>
                     </button>
