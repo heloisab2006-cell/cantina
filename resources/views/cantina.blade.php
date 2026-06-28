@@ -1,36 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('layouts.app')
+
+@section('title', 'Cantina - Hospital Maice')
+
+@section('content')
 
 @include('partials.modal_meusdados')
-
-
 @include('partials.modal_checkout')
-
-
 @include('partials.modal_carrinho')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina - Hospital Maice</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RXXTJZRKZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7RXXTJZRKZ');
-</script>
-
-<body class="bg-light">
 
     <div class="container py-3">
-      
+
         <div class="sticky-top bg-white shadow-sm p-3 mb-4">
             <h1 class="text-center fw-bold text-secondary">Cantina - Hospital Maice</h1>
             <nav class="d-flex justify-content-around mt-3">
@@ -40,7 +20,7 @@
             </nav>
         </div>
 
-        <!-- Salgados -->
+         <!-- Salgados -->
         <h2 id="secao-salgados" class="text-success fw-bold text-uppercase mt-4">Salgados</h2>
         @foreach($salgados as $produto)
             <form action="{{ route('carrinho.adicionar') }}" method="POST"
@@ -73,9 +53,8 @@
                 <input type="hidden" name="name" value="{{ $produto->nome }}">
                 <input type="hidden" name="price" value="{{ $produto->preco }}">
                 <div class="d-flex align-items-center gap-3 flex-grow-1">
-                    <img src="{{ asset('storage/'.$produto->imagem) }}" alt="{{ $produto->nome }}"
-     class="rounded img-thumbnail"
-     style="width:70px;height:70px;object-fit:cover;">
+                    <img src="{{ asset('storage/' . $produto->imagem) }}" alt="{{ $produto->nome }}"
+                        class="rounded img-thumbnail" style="width:70px;height:70px;object-fit:cover;">
 
                     <div>
                         <div class="fw-bold text-uppercase">{{ $produto->nome }}</div>
@@ -97,9 +76,8 @@
                 <input type="hidden" name="name" value="{{ $produto->nome }}">
                 <input type="hidden" name="price" value="{{ $produto->preco }}">
                 <div class="d-flex align-items-center gap-3 flex-grow-1">
-                    <img src="{{ asset('storage/'.$produto->imagem) }}" alt="{{ $produto->nome }}"
-     class="rounded img-thumbnail"
-     style="width:70px;height:70px;object-fit:cover;">
+                    <img src="{{ asset('storage/' . $produto->imagem) }}" alt="{{ $produto->nome }}"
+                        class="rounded img-thumbnail" style="width:70px;height:70px;object-fit:cover;">
 
                     <div>
                         <div class="fw-bold text-uppercase">{{ $produto->nome }}</div>
@@ -112,7 +90,8 @@
         @endforeach
     </div>
 
-    <div class="fixed-bottom bg-success text-white py-1">
+    
+    <div class="sticky-bottom bg-success text-white py-1">
         <div class="container-fluid">
             <div class="d-flex text-center">
                 <div class="flex-fill">
@@ -124,7 +103,7 @@
                         </div>
                     </button>
                 </div>
-                
+
                 <div class="border-start border-white"></div>
                 <div class="flex-fill">
                     <button id="btn-ver-carrinho" class="btn text-white d-block w-100" data-bs-toggle="modal"
@@ -149,8 +128,5 @@
     </div>
 
 
+@endsection
 
-
-</body>
-
-</html>
