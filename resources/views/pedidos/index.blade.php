@@ -12,6 +12,16 @@
 
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RXXTJZRKZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7RXXTJZRKZ');
+</script>
+
 <body class="bg-light">
 
     <div class="container py-3">
@@ -25,7 +35,7 @@
             </nav>
         </div>
 
-        <!-- Pedidos Feitos -->
+        
         <h2 id="secao-feitos" class="text-primary fw-bold text-uppercase mt-4">Pedidos Feitos</h2>
         @foreach($pedidosFeitos as $pedido)
             <div class="d-flex align-items-center justify-content-between border-bottom py-2">
@@ -44,7 +54,7 @@
         @endforeach
 
 
-        <!-- Pedidos Finalizados -->
+        
         <h2 id="secao-finalizados" class="text-success fw-bold text-uppercase mt-4">Pedidos Finalizados</h2>
         @foreach($pedidosFinalizados as $pedido)
             <div class="d-flex align-items-center justify-content-between border-bottom py-2">
@@ -53,13 +63,13 @@
                     <div class="text-muted small">CPF: {{ $pedido->cpf }}</div>
                     <div class="text-success fw-bold">Total: R$ {{ number_format($pedido->total, 2, ',', '.') }}</div>
                 </div>
-                <!-- Botão que abre o modal -->
+                
                 <button type="button" class="btn btn-success btn-lg rounded" data-bs-toggle="modal"
                     data-bs-target="#pedidoFinalizadoModal{{ $pedido->id }}">
                     <b>VER DETALHES</b>
                 </button>
 
-                <!-- Inclui o partial do modal -->
+                
                 @include('partials.pedido_finalizado_modal', ['pedido' => $pedido])
 
             </div>

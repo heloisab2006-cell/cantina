@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!-- Modal_meusdados.blade.php -->
+
 @include('partials.modal_meusdados')
 
-<!-- Modal Checkout -->
+
 @include('partials.modal_checkout')
 
-<!-- Modal Carrinho -->
+
 @include('partials.modal_carrinho')
 
 <head>
@@ -17,10 +17,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RXXTJZRKZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7RXXTJZRKZ');
+</script>
+
 <body class="bg-light">
 
     <div class="container py-3">
-        <!-- Cabeçalho fixo -->
+      
         <div class="sticky-top bg-white shadow-sm p-3 mb-4">
             <h1 class="text-center fw-bold text-secondary">Cantina - Hospital Maice</h1>
             <nav class="d-flex justify-content-around mt-3">
@@ -102,7 +112,6 @@
         @endforeach
     </div>
 
-    <!-- Rodapé carrinho -->
     <div class="fixed-bottom bg-success text-white py-1">
         <div class="container-fluid">
             <div class="d-flex text-center">
@@ -115,7 +124,7 @@
                         </div>
                     </button>
                 </div>
-                <!-- Divisão -->
+                
                 <div class="border-start border-white"></div>
                 <div class="flex-fill">
                     <button id="btn-ver-carrinho" class="btn text-white d-block w-100" data-bs-toggle="modal"

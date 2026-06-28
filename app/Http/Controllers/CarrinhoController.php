@@ -20,7 +20,6 @@ class CarrinhoController extends Controller
         return view('carrinho.index', compact('carrinho', 'total'));
     }
 
-    //Busca o Produto pelo ID, se existir aumenta a quantidade
     public function adicionar(Request $request)
     {
         $produto = Produto::findOrFail($request->id);

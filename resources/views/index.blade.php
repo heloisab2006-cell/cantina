@@ -1,6 +1,18 @@
+
 @extends('layouts.app') {{-- usa o mesmo layout base do cliente --}}
 
 @section('content')
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RXXTJZRKZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7RXXTJZRKZ');
+</script>
+
 <div class="container my-4">
     <h2 class="fw-bold text-center mb-4">📋 Lista de Pedidos</h2>
 
