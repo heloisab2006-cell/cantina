@@ -74,7 +74,7 @@
                     <a href="{{ route('produtos.index') }}" class="btn text-white d-block w-100">
                         <div class="d-flex flex-column align-items-center">
                             <span class="fs-4">🍴</span>
-                            <strong>Cantina</strong>
+                            <strong>CANTINA</strong>
                         </div>
                     </a>
                 </div>
@@ -83,7 +83,7 @@
                     <a href="{{ route('produtos.gerenciar') }}" class="btn text-white d-block w-100">
                         <div class="d-flex flex-column align-items-center">
                             <span class="fs-4">⚙️</span>
-                            <strong>Gerenciar</strong>
+                            <strong>GERENCIAR</strong>
                         </div>
                     </a>
                 </div>
