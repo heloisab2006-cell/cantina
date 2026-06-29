@@ -53,7 +53,7 @@
                 <div class="flex-fill">
                     <a href="{{ route('produtos.index') }}" class="btn text-white d-block w-100">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-4">🍴</span>
+                            <span class="fs-4"></span>
                             <strong>Cantina</strong>
                         </div>
                     </a>
@@ -62,7 +62,7 @@
                 <div class="flex-fill">
                     <a href="{{ route('pedidos.index') }}" class="btn text-white d-block w-100">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-4">📋</span>
+                            <span class="fs-4"></span>
                             <strong>Pedidos</strong>
                         </div>
                     </a>
@@ -71,7 +71,7 @@
                 <div class="flex-fill">
                     <a href="{{ route('produtos.gerenciar') }}" class="btn btn-warning d-block w-100 fw-bold">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-3">➕</span>
+                            <span class="fs-3"></span>
                             <strong>Novo Produto</strong>
                         </div>
                     </a>
