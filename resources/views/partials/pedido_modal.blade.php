@@ -28,12 +28,12 @@
             <div class="modal-footer">
                 <form action="{{ route('pedidos.confirmar', $pedido->id) }}" method="POST" class="d-inline">
                     @csrf
-                    <button type="submit" class="btn btn-success">Confirmar Pedido ✅</button>
+                    <button type="submit" class="btn btn-success">Confirmar Pedido</button>
                 </form>
 
                 <form action="{{ route('pedidos.cancelar', $pedido->id) }}" method="POST" class="d-inline">
                     @csrf
-                    <button type="submit" class="btn btn-danger">Cancelar Pedido ❌</button>
+                    <button type="submit" class="btn btn-danger">Cancelar Pedido</button>
                 </form>
 
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

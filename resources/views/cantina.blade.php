@@ -116,7 +116,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success rounded-circle d-flex align-items-center justify-content-center border-0 shadow-sm p-0" style="width: 36px; height: 36px; min-width: 36px;">
-                    <i class="bi bi-plus-lg fs-5"></i>
+                    <i class="bi bi-plus-lg fs-5">+</i>
                 </button>
             </form>
         @endforeach
