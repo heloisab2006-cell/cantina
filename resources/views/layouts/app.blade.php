@@ -24,14 +24,16 @@
 
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ route('produtos.index') }}">
                 <a href="{{ route('produtos.index') }}" title="Clique para visitar o site">
                     <img src="{{ asset('img/logo_maice.png') }}" alt="Logo do Hospital Maice" width="50" height="50" />
                 </a>
             </a>
-
+            <div class="ms-auto d-flex">
+            <p class="h3 bs-primary-text-emphasis fw-bold">Sistema de Cantina</p>
+            </div>
             <!-- Botões à direita -->
             <div class="ms-auto d-flex">
                 <a href="{{ route('central') }}" class="btn btn-warning">
