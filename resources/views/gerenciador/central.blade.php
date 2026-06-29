@@ -12,7 +12,7 @@
                 <div class="card shadow-sm h-100 border-primary">
                     <div class="card-body text-center">
                         <h5 class="card-title text-primary">CARDÁPIO</h5>
-                        <p class="card-text">Veja o cardápio completo.</p>
+                        <p class="card-text">Veja o cardápio completo</p>
                         <a href="{{ route('produtos.index') }}" class="btn btn-primary">Acessar</a>
                     </div>
                 </div>
