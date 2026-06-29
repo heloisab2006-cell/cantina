@@ -25,7 +25,7 @@
                 </div>
                 <button type="button" class="btn btn-primary btn-lg rounded" data-bs-toggle="modal"
                     data-bs-target="#pedidoModal{{ $pedido->id }}">
-                    <b>VER DETALHES</b>
+                    <b>Ver Detalhes</b>
                 </button>
                 @include('partials.pedido_modal', ['pedido' => $pedido])
             </div>
@@ -42,7 +42,7 @@
                 </div>
                 <button type="button" class="btn btn-success btn-lg rounded" data-bs-toggle="modal"
                     data-bs-target="#pedidoFinalizadoModal{{ $pedido->id }}">
-                    <b>VER DETALHES</b>
+                    <b>Ver Detalhes</b>
                 </button>
                 @include('partials.pedido_finalizado_modal', ['pedido' => $pedido])
             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <button type="button" class="btn btn-danger btn-lg rounded" data-bs-toggle="modal"
                     data-bs-target="#pedidoCanceladoModal{{ $pedido->id }}">
-                    <b>VER DETALHES</b>
+                    <b>Ver Detalhes</b>
                 </button>
                 @include('partials.pedido_cancelado_modal', ['pedido' => $pedido])
             </div>
@@ -73,8 +73,8 @@
                 <div class="flex-fill">
                     <a href="{{ route('produtos.index') }}" class="btn text-white d-block w-100">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-4">🍴</span>
-                            <strong>CANTINA</strong>
+                            <span class="fs-4"></span>
+                            <strong>Cantina</strong>
                         </div>
                     </a>
                 </div>
@@ -82,8 +82,8 @@
                 <div class="flex-fill">
                     <a href="{{ route('produtos.gerenciar') }}" class="btn text-white d-block w-100">
                         <div class="d-flex flex-column align-items-center">
-                            <span class="fs-4">⚙️</span>
-                            <strong>GERENCIAR</strong>
+                            <span class="fs-4"></span>
+                            <strong>Gerenciar</strong>
                         </div>
                     </a>
                 </div>
